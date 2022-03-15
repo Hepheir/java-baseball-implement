@@ -105,6 +105,26 @@ public class Application implements Game {
     public boolean isWin() {
         return countStrikes() == 3;
     }
+
+    @Override
+    public void printResult() {
+        int strikeCnt = countStrikes();
+        int ballCnt = countBalls();
+        if (strikeCnt == 0 && ballCnt == 0) {
+            System.out.print("낫싱");
+        } else {
+            if (ballCnt > 0) {
+                System.out.printf("%d볼", ballCnt);
+            }
+            if (strikeCnt > 0 && ballCnt > 0) {
+                System.out.print(" ");
+            }
+            if (strikeCnt > 0) {
+                System.out.printf("%d스트라이크", strikeCnt);
+            }
+        }
+        System.out.println();
+    }
 }
 
 interface Game {
