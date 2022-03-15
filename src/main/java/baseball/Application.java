@@ -100,6 +100,11 @@ public class Application implements Game {
         }
         return strikesCnt;
     }
+
+    @Override
+    public boolean isWin() {
+        return countStrikes() == 3;
+    }
 }
 
 interface Game {
