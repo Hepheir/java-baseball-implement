@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Application implements Game {
     int[] hostNumbers = {-1, -1, -1};
     int[] playerNumbers = {-1, -1, -1};
@@ -40,6 +42,29 @@ public class Application implements Game {
 
     private boolean checkValue(int value) {
         return 1 <= value && value <= 9;
+    }
+
+    @Override
+    public void setup() {
+        generateRandomHostNumbers();
+    }
+
+    private void generateRandomHostNumbers() {
+        for (int i = 0; i < 3; i++) {
+            int newNumber;
+            do {
+                newNumber = Randoms.pickNumberInRange(1, 9);
+                setHostNumber(i, newNumber);
+            } while (isNumberInHostNumbers(newNumber, i));
+        }
+    }
+
+    private boolean isNumberInHostNumbers(int number, int endExclusive) {
+        for (int i = 0; i < endExclusive; i++) {
+            if (getHostNumber(i) == number)
+                return true;
+        }
+        return false;
     }
 }
 
