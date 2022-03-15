@@ -22,6 +22,24 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 테스트_getHostNumber와setHostNumber() {
+        assertSimpleTest(() -> {
+            Application app = new Application();
+            app.setHostNumber(1, 1);
+            assertThat(app.getHostNumber(1)).isEqualTo(1);
+        });
+    }
+
+    @Test
+    void 테스트_getPlayerNumber와setPlayerNumber() {
+        assertSimpleTest(() -> {
+            Application app = new Application();
+            app.setPlayerNumber(1, 1);
+            assertThat(app.getPlayerNumber(1)).isEqualTo(1);
+        });
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("1234"))
