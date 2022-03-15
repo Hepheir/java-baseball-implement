@@ -201,21 +201,3 @@ interface BaseballGame extends Game {
 
     public void printResult();
 }
-
-interface Game {
-    default public void start() {
-        setup();
-        while (!isWin()) {
-            move();
-        }
-        end();
-    }
-
-    public void setup();
-
-    public void move();
-
-    public boolean isWin();
-
-    public void end();
-}
