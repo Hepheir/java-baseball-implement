@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application implements Game {
+    final String CMD_NEW_GAME = "1";
+    final String CMD_END_GAME = "2";
     final int AMOUNT_OF_NUMBERS = 3;
     final int NUMBER_RANGE_START_INCLUSIVE = 1;
     final int NUMBER_RANGE_END_INCLUSIVE = 9;
@@ -13,7 +15,22 @@ public class Application implements Game {
     public static void main(String[] args) {
         //TODO: 숫자 야구 게임 구현
         Application app = new Application();
-        app.start();
+        do {
+            app.start();
+        } while (app.promptStartNewGame());
+    }
+
+    private boolean promptStartNewGame() throws IllegalArgumentException {
+        System.out.printf("게임을 새로 시작하려면 %s, 종료하려면 %s를 입력하세요.", CMD_NEW_GAME, CMD_END_GAME);
+        System.out.println();
+        String rawUserInput = getPlayerInput();
+        if (rawUserInput.equals(CMD_NEW_GAME)) {
+            return true;
+        }
+        if (rawUserInput.equals(CMD_END_GAME)) {
+            return false;
+        }
+        throw new IllegalArgumentException("올바르지 않은 입력입니다.");
     }
 
     @Override
