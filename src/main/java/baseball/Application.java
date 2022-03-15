@@ -9,8 +9,8 @@ public class Application implements BaseballGame {
     final int AMOUNT_OF_NUMBERS = 3;
     final int NUMBER_RANGE_START_INCLUSIVE = 1;
     final int NUMBER_RANGE_END_INCLUSIVE = 9;
-    int[] hostNumbers = { -1, -1, -1 };
-    int[] playerNumbers = { -1, -1, -1 };
+    int[] hostNumbers = new int[] { -1, -1, -1 };
+    int[] playerNumbers = new int[] { -1, -1, -1 };
 
     public static void main(String[] args) {
         Application app = new Application();
