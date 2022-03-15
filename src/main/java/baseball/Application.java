@@ -13,7 +13,6 @@ public class Application implements BaseballGame {
     int[] playerNumbers = {-1, -1, -1};
 
     public static void main(String[] args) {
-        //TODO: 숫자 야구 게임 구현
         Application app = new Application();
         do {
             app.start();
