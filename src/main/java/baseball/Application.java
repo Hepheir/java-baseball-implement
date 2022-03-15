@@ -11,11 +11,11 @@ public class Application implements Game {
 interface Game {
     public int getHostNumber(int index);
 
-    public int setHostNumber(int index, int value);
+    public void setHostNumber(int index, int value);
 
     public int getPlayerNumber(int index);
 
-    public int setPlayerNumber(int index, int value);
+    public void setPlayerNumber(int index, int value);
 
     default public void start() {
         setup();
