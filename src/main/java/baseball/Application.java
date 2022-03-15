@@ -125,6 +125,12 @@ public class Application implements Game {
         }
         System.out.println();
     }
+
+    @Override
+    public void end() {
+        System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println();
+    }
 }
 
 interface Game {
