@@ -3,7 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Application implements Game {
+public class Application implements BaseballGame {
     final String CMD_NEW_GAME = "1";
     final String CMD_END_GAME = "2";
     final int AMOUNT_OF_NUMBERS = 3;
@@ -187,7 +187,7 @@ public class Application implements Game {
     }
 }
 
-interface Game {
+interface BaseballGame extends Game {
     public int getHostNumber(int index);
 
     public void setHostNumber(int index, int value);
@@ -196,6 +196,14 @@ interface Game {
 
     public void setPlayerNumber(int index, int value);
 
+    public int countStrikes();
+
+    public int countBalls();
+
+    public void printResult();
+}
+
+interface Game {
     default public void start() {
         setup();
         while (!isWin()) {
@@ -207,12 +215,6 @@ interface Game {
     public void setup();
 
     public void move();
-
-    public int countStrikes();
-
-    public int countBalls();
-
-    public void printResult();
 
     public boolean isWin();
 
