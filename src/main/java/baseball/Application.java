@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application implements Game {
     final int AMOUNT_OF_NUMBERS = 3;
+    final int NUMBER_RANGE_START_INCLUSIVE = 1;
+    final int NUMBER_RANGE_END_INCLUSIVE = 9;
     int[] hostNumbers = {-1, -1, -1};
     int[] playerNumbers = {-1, -1, -1};
 
@@ -42,7 +44,7 @@ public class Application implements Game {
     }
 
     private boolean checkValue(int value) {
-        return 1 <= value && value <= 9;
+        return NUMBER_RANGE_START_INCLUSIVE <= value && value <= NUMBER_RANGE_END_INCLUSIVE;
     }
 
     @Override
@@ -54,7 +56,7 @@ public class Application implements Game {
         for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
             int newNumber;
             do {
-                newNumber = Randoms.pickNumberInRange(1, 9);
+                newNumber = Randoms.pickNumberInRange(NUMBER_RANGE_START_INCLUSIVE, NUMBER_RANGE_END_INCLUSIVE);
                 setHostNumber(i, newNumber);
             } while (isNumberInHostNumbers(newNumber, i));
         }
