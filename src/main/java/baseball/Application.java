@@ -3,6 +3,7 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application implements Game {
+    final int AMOUNT_OF_NUMBERS = 3;
     int[] hostNumbers = {-1, -1, -1};
     int[] playerNumbers = {-1, -1, -1};
 
@@ -37,7 +38,7 @@ public class Application implements Game {
     }
 
     private boolean checkIndex(int index) {
-        return 0 <= index && index <= 2;
+        return 0 <= index && index < AMOUNT_OF_NUMBERS;
     }
 
     private boolean checkValue(int value) {
@@ -50,7 +51,7 @@ public class Application implements Game {
     }
 
     private void generateRandomHostNumbers() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
             int newNumber;
             do {
                 newNumber = Randoms.pickNumberInRange(1, 9);
@@ -70,7 +71,7 @@ public class Application implements Game {
     @Override
     public int countBalls() {
         int ballsCnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
             int playerNumber = getPlayerNumber(i);
             int numberFoundAt = findNumberFromHostNumbers(playerNumber);
             if (numberFoundAt != -1 && numberFoundAt != i) {
@@ -82,7 +83,7 @@ public class Application implements Game {
 
     private int findNumberFromHostNumbers(int number) {
         // Returns -1, if not found.
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
             if (getHostNumber(i) == number) {
                 return i;
             }
@@ -93,7 +94,7 @@ public class Application implements Game {
     @Override
     public int countStrikes() {
         int strikesCnt = 0;
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
             if (getHostNumber(i) == getPlayerNumber(i)) {
                 strikesCnt++;
             }
@@ -103,7 +104,7 @@ public class Application implements Game {
 
     @Override
     public boolean isWin() {
-        return countStrikes() == 3;
+        return countStrikes() == AMOUNT_OF_NUMBERS;
     }
 
     @Override
@@ -128,7 +129,7 @@ public class Application implements Game {
 
     @Override
     public void end() {
-        System.out.printf("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", AMOUNT_OF_NUMBERS);
         System.out.println();
     }
 }
