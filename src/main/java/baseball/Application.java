@@ -1,5 +1,6 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application implements Game {
@@ -133,6 +134,39 @@ public class Application implements Game {
     public void end() {
         System.out.printf("%d개의 숫자를 모두 맞히셨습니다! 게임 종료", AMOUNT_OF_NUMBERS);
         System.out.println();
+    }
+
+    @Override
+    public void move() throws IllegalArgumentException {
+        promptPlayerNumbers();
+        printResult();
+    }
+
+    private void promptPlayerNumbers() throws IllegalArgumentException {
+        System.out.print("숫자를 입력해주세요 : ");
+        String[] rawPlayerNumbers = getPlayerInput().split("");
+        checkAmountOfNumbers(rawPlayerNumbers);
+        parseRawPlayerNumbers(rawPlayerNumbers);
+    }
+
+    private String getPlayerInput() {
+        return Console.readLine().trim();
+    }
+
+    private <T> void checkAmountOfNumbers(T[] numbers) throws IllegalArgumentException {
+        if (numbers.length != AMOUNT_OF_NUMBERS) {
+            throw new IllegalArgumentException("3개의 숫자를 입력하셔야합니다.");
+        }
+    }
+
+    private void parseRawPlayerNumbers(String[] rawPlayerNumbers) throws IllegalArgumentException {
+        for (int i = 0; i < AMOUNT_OF_NUMBERS; i++) {
+            try {
+                setPlayerNumber(i, Integer.parseInt(rawPlayerNumbers[i]));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("숫자만 입력할 수 있습니다.");
+            }
+        }
     }
 }
 
