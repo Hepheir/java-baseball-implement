@@ -66,6 +66,29 @@ public class Application implements Game {
         }
         return false;
     }
+
+    @Override
+    public int countBalls() {
+        int ballsCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            int playerNumber = getPlayerNumber(i);
+            int numberFoundAt = findNumberFromHostNumbers(playerNumber);
+            if (numberFoundAt != -1 && numberFoundAt != i) {
+                ballsCnt++;
+            }
+        }
+        return ballsCnt;
+    }
+
+    private int findNumberFromHostNumbers(int number) {
+        // Returns -1, if not found.
+        for (int i = 0; i < 3; i++) {
+            if (getHostNumber(i) == number) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
 
 interface Game {
