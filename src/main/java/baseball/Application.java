@@ -89,6 +89,17 @@ public class Application implements Game {
         }
         return -1;
     }
+
+    @Override
+    public int countStrikes() {
+        int strikesCnt = 0;
+        for (int i = 0; i < 3; i++) {
+            if (getHostNumber(i) == getPlayerNumber(i)) {
+                strikesCnt++;
+            }
+        }
+        return strikesCnt;
+    }
 }
 
 interface Game {
