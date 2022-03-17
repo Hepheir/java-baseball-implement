@@ -19,3 +19,8 @@ bin/
 *.iws
 *.iml
 *.ipr
+
+### user configurations
+.editorconfig
+.gitattributes
+.vscode
