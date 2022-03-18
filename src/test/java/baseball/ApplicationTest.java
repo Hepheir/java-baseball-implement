@@ -3,21 +3,34 @@ package baseball;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import java.util.ArrayList;
 
 class ApplicationTest extends NsTest {
 
     @Test
     void 게임종료_후_재시작() {
-        assertRandomNumberInRangeTest(
+        final List<Integer> firstNumbers = new ArrayList<>();
+        firstNumbers.add(1);
+        firstNumbers.add(3);
+        firstNumbers.add(5);
+
+        final List<Integer> secondNumbers = new ArrayList<>();
+        secondNumbers.add(5);
+        secondNumbers.add(8);
+        secondNumbers.add(9);
+
+        assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("246", "135", "1", "597", "589", "2");
                     assertThat(output()).contains("낫싱", "3스트라이크", "1볼 1스트라이크", "3스트라이크", "게임 종료");
                 },
-                1, 3, 5, 5, 8, 9
+                firstNumbers, secondNumbers
         );
     }
 
