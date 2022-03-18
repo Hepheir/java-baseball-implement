@@ -1,7 +1,7 @@
 package baseball;
 
 public interface Game {
-    default public void run() {
+    default void run() {
         start();
         do {
             onTurn();
@@ -9,19 +9,19 @@ public interface Game {
         end();
     }
 
-    public void onStart();
+    void onStart();
 
-    public void onTurn();
+    void onTurn();
 
-    public boolean isWin();
+    boolean isWin();
 
-    public void onEnd();
+    void onEnd();
 
-    default public void start() {
+    default void start() {
         onStart();
     }
 
-    default public void end() {
+    default void end() {
         onEnd();
     }
 }
