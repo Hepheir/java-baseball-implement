@@ -9,11 +9,19 @@ public interface Game {
         end();
     }
 
-    public void setup();
+    public void onStart();
 
     public void onTurn();
 
     public boolean isWin();
 
-    public void end();
+    public void onEnd();
+
+    default public void start() {
+        onStart();
+    }
+
+    default public void end() {
+        onEnd();
+    }
 }
