@@ -33,7 +33,8 @@ public class Control {
         }
     }
 
-    private static void checkIsInRange(int number, int startInclusive, int endInclusive) throws IllegalArgumentException {
+    private static void checkIsInRange(int number, int startInclusive, int endInclusive)
+            throws IllegalArgumentException {
         if (number < startInclusive || endInclusive < number) {
             throw new IllegalArgumentException("1~9 사이의 숫자만 입력할 수 있습니다.");
         }
