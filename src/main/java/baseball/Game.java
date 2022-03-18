@@ -4,14 +4,14 @@ public interface Game {
     default public void run() {
         setup();
         while (!isWin()) {
-            move();
+            onTurn();
         }
         end();
     }
 
     public void setup();
 
-    public void move();
+    public void onTurn();
 
     public boolean isWin();
 
