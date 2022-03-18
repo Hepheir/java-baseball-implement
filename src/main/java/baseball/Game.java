@@ -2,10 +2,10 @@ package baseball;
 
 public interface Game {
     default public void run() {
-        setup();
-        while (!isWin()) {
+        start();
+        do {
             onTurn();
-        }
+        } while (!isWin());
         end();
     }
 
