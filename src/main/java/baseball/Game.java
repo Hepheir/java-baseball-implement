@@ -1,7 +1,7 @@
 package baseball;
 
 public interface Game {
-    default public void start() {
+    default public void run() {
         setup();
         while (!isWin()) {
             move();
